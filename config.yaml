@@ -1,0 +1,25 @@
+# Script automation configuration
+# Define which scripts to run when files are added to SharePoint
+
+automations:
+  # Example: Process uploaded CSV files
+  - name: "Process CSV Files"
+    enabled: true
+    trigger:
+      file_pattern: "*.csv"
+      folder: "Uploads"
+    script: "scripts/process_csv.py"
+    args:
+      - "--input"
+      - "{file_path}"
+    
+  # Example: Convert uploaded documents
+  - name: "Convert Documents"
+    enabled: false
+    trigger:
+      file_pattern: "*.docx"
+      folder: "Documents"
+    script: "scripts/convert_document.py"
+    args:
+      - "{file_path}"
+      - "{file_name}"
